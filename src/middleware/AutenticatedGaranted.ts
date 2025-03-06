@@ -4,7 +4,7 @@ import { AppError } from "../utils/AppError"
 import { verify } from "jsonwebtoken"
 import { authConfig } from "../config/env"
 
-export  function Autenticated(req: FastifyRequest, res: FastifyReply){
+export async function Autenticated(req: FastifyRequest, res: FastifyReply){
 
     interface TokenPayload{
         role: string,
