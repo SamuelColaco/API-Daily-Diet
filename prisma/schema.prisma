@@ -33,7 +33,7 @@ model DietMeal{
   name String
   description String @default("")
   date String
-  hour Decimal
+  hour String
   InDiet Boolean
 
   user User @relation(fields: [userId], references: [id])
