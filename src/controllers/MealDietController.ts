@@ -53,6 +53,7 @@ export class MealDietController{
         const { id } = paramSchema.parse(req.params)
 
         const mealExist = await prisma.dietMeal.findFirst({ where: { id }})
+        
 
         if(!mealExist){
             throw new AppError("Essa refeição não foi adicionada")
