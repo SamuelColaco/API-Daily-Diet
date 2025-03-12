@@ -15,6 +15,9 @@ export class SessionController{
             password: z.string().min(6)
         })
 
+
+        
+
         const { email, password } = BodySchema.parse(req.body)
 
         const userExist = await prisma.user.findFirst({ where: { email }})

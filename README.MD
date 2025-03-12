@@ -139,18 +139,18 @@ A **API Daily Diet** é uma aplicação desenvolvida para gerenciar sua dieta, p
     Header: 
         Authorization: Bearer seu_token_aqui
     Reposta:{
-	"meals": [
-		{
-			"id": "Id da refeição em  formato UUID",
-			"userId": "Id do usuário que cadastrou a refeição",
-			"name": "Nome da refeição",
-			"description": "Descrição caso tenha(Caso não tenha, aparecerá "Não tem descrição")",
-			"date": " Data da refeição",
-			"hour": "Hora da refeição",
-			"InDiet": Booleano(true ou false)
-		}
-	]
-}
+        "meals": [
+            {
+                "id": "Id da refeição em  formato UUID",
+                "userId": "Id do usuário que cadastrou a refeição",
+                "name": "Nome da refeição",
+                "description": "Descrição caso tenha(Caso não tenha, aparecerá "Não tem descrição")",
+                "date": " Data da refeição",
+                "hour": "Hora da refeição",
+                "InDiet": Booleano(true ou false)
+            }
+        ]      
+        }
     StatusCode: 200(Ok)
 
 
