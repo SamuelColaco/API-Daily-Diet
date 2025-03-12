@@ -14,7 +14,7 @@ export async function Autenticated(req: FastifyRequest, res: FastifyReply){
     const authHeader = req.headers.authorization
 
     if(!authHeader){
-        throw new AppError("Você não está autenticado")
+        throw new AppError("Você não está autenticado", 401)
     }
 
     const authHeaderToken = authHeader.slice(7)
