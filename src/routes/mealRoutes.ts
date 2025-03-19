@@ -14,4 +14,6 @@ export function mealRoutes(mealRoutes: FastifyInstance){
     mealRoutes.put("/meal/:id", { preHandler : [Autenticated, VerifyUserAuthorization(["admin"])]}, mealDietController.update)
     mealRoutes.get("/meal/:id", { preHandler: [Autenticated, VerifyUserAuthorization(["admin"])]}, mealDietController.indexAllMealFromUser)
     mealRoutes.get("/meal/list/:id", { preHandler: [Autenticated, VerifyUserAuthorization(["admin"])]}, mealDietController.numberOfMealsRegisterByUser)
+    mealRoutes.delete("/meal/:id", { preHandler: [Autenticated, VerifyUserAuthorization(["admin"])]}, mealDietController.deleteMeal)
+    mealRoutes.delete("/meal/list/:id", {preHandler: [Autenticated, VerifyUserAuthorization(["member", "admin"])]}, mealDietController.deleteYourMeal)
 }

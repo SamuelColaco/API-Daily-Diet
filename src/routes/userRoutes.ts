@@ -10,5 +10,6 @@ export function userRoutes(userRoutes: FastifyInstance){
     userRoutes.get("/user", {preHandler: [Autenticated, VerifyUserAuthorization(["admin"])]}, userController.index)
     userRoutes.post("/user",{preHandler: [Autenticated,VerifyUserAuthorization(["member","admin"]) ]}, userController.create)
     userRoutes.put("/user/:id", {preHandler: [Autenticated, VerifyUserAuthorization(["admin"])]},userController.update)
-    
+    userRoutes.delete("/user/:id", { preHandler: [Autenticated, VerifyUserAuthorization(["admin"])]}, userController.deleteUserById)
+    userRoutes.delete("/user/list/:id", {preHandler: [Autenticated, VerifyUserAuthorization(["member", "admin"])]}, userController.deleteYourSelf)
 }

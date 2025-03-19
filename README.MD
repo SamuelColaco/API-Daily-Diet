@@ -193,6 +193,42 @@ A **API Daily Diet** é uma aplicação desenvolvida para gerenciar sua dieta, p
     }
     StatusCode: 200(Ok)
 
+    
+### Delete
+
+    URL: /user/:id
+    Prpósito: Deleta um usuário
+    Body: Não passa nada
+    Message: {
+        "Não tem mensagem"
+    }
+    StatusCode: 200(Ok)
+
+    URL: /user/list/:id
+    Prpósito: Deleta o próprio usuário
+    Body: Não passa nada
+    Message: {
+        "Não tem mensagem"
+    }
+    StatusCode: 200(Ok)
+
+    URL: /meal/:id
+    Propósito: Deleta uma refeição
+    Body:  Não passa nada
+    Message: {
+        "Não tem mensagem"
+    }
+    StatusCode: 200(Ok)
+
+    URL: /meal/list:id
+    Próposito: Deleta a própria refeição cadastrada
+    Body: Não passa nada
+    Message: {
+        "Não tem mensagem"
+    }
+    StatusCode: 200(Ok)
+
+
 ## Testes
 
 - **Para executar os testes**

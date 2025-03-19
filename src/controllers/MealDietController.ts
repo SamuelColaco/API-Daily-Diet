@@ -125,4 +125,46 @@ export class MealDietController{
 
 
     }
+
+    async deleteMeal(req: FastifyRequest, res: FastifyReply){
+
+        const paramSchema = z.object({
+            id: z.string().uuid()
+        })
+
+        const { id } = paramSchema.parse(req.params)
+
+        const mealExist = await prisma.dietMeal.findFirst({ where: { id }})
+
+        if(!mealExist){
+            throw new AppError("Não existe essa refeição", 404)
+        }
+
+        await prisma.dietMeal.delete({ where: { id }})
+
+        res.status(200).send()
+
+    }
+
+    async deleteYourMeal(req: FastifyRequest, res: FastifyReply){
+        const paramSchema = z.object({
+            id: z.string().uuid()
+        })
+
+        const { id } = paramSchema.parse(req.params)
+
+        const mealExist = await prisma.dietMeal.findFirst({ where: { id }})
+
+        if(!mealExist){
+            throw new AppError("Não existe essa refeição", 404)
+        }
+        
+        if(mealExist.userId !== req.user?.id){
+            throw new AppError("Você não tem autorização dessa ação", 401)
+        }
+
+        await prisma.dietMeal.delete({ where: { id }})
+
+        res.status(200).send()
+    }
 }

@@ -67,4 +67,45 @@ export class UserController{
         res.status(200).send()
 
     }
+
+    async deleteUserById(req: FastifyRequest, res: FastifyReply){
+
+        const paramSchema = z.object({
+            id: z.string().uuid()
+        })
+
+        const { id } = paramSchema.parse(req.params)
+
+        const userExist = await prisma.user.findFirst({ where: { id }})
+
+        if(!userExist){
+            throw new AppError("Usuário não existe", 404)
+        }
+
+        await prisma.user.delete({ where: { id }})
+
+        res.status(200).send()
+    }
+
+    async deleteYourSelf(req: FastifyRequest, res: FastifyReply){
+        const paramSchema = z.object({
+            id: z.string().uuid()
+        })
+
+        const { id } = paramSchema.parse(req.params)
+
+        const userExist = await prisma.user.findFirst({ where: { id }})
+
+        if(!userExist){
+            throw new AppError("Usuário não existe", 404)
+        }
+
+        if(userExist.id !== req.user?.id){
+            throw new AppError("Você não tem autorização para essa ação", 401)
+        }
+
+        await prisma.user.delete({ where: { id }})
+
+        res.status(200).send()
+    }
 }
